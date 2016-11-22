@@ -1,4 +1,4 @@
-#Magic Login
+#Magic Login - BETA
 Simple and password-less login for [Craft CMS](https://craftcms.com/).
 
 ##Installation
