@@ -18,7 +18,12 @@ class MagicLoginPlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '1.0';
+        return '1.0.0';
+    }
+
+    public function getSchemaVersion()
+    {
+        return '1.0.0';
     }
 
     public function getDeveloper()
@@ -29,6 +34,11 @@ class MagicLoginPlugin extends BasePlugin
     public function getDeveloperUrl()
     {
         return 'https://github.com/aberkie/magiclogin';
+    }
+
+    public function getDescription()
+    {
+        return 'Simple password-less login for Craft CMS.';
     }
 
     public function registerSiteRoutes()
