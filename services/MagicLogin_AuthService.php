@@ -19,7 +19,7 @@ class MagicLogin_AuthService extends BaseApplicationComponent
         // Look up user
         $user = craft()->users->getUserByEmail($email);
 
-        if ($user === null) {
+        if ($user === null || $user->status != 'active') {
             return false;
         }
 
