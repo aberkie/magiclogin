@@ -1,0 +1,17 @@
+{% from "_includes/forms" import textfield %}
+
+{{textfield({
+	id: 'linkExpirationTime',
+	name: 'linkExpirationTime',
+	value: settings['linkExpirationTime'],
+	label: 'Magic Link Expiration Time (in minutes)',
+	size: 10
+})}}
+
+{{textfield({
+	id: 'redirectAfterLogin',
+	name: 'redirectAfterLogin',
+	value: settings['redirectAfterLogin'],
+	label: 'Redirect URL after Login (i.e. "/admin")',
+	size: 30
+})}}

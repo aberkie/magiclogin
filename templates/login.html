@@ -1,0 +1,72 @@
+{#
+Magic Login - Login Form
+Author: Aaron Berkowitz <aaron.berkowitz@me.com>
+#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{siteName}} - Magic Link Login</title>
+</head>
+<style type="text/css">
+	body{
+		background-color: #ebedef;
+		font-family: HelveticaNeue-Light, HelveticaNeue, sans-serif;
+	}
+
+	h1 {
+		font-weight: normal;
+	}
+
+	p{
+		font-size: 16px;
+	}
+
+	p.fail{
+		color: #da5a47;
+	}
+
+	p.success {
+		color: #26aa17;
+	}
+
+	label{
+		font-size: 20px;
+		margin-bottom: 4px;
+	}
+
+	input{
+		height: 32px;
+		font-size: 16px;
+	}
+
+	.container{
+	    display: block;
+	    text-align: center;
+	}
+</style>
+<body>
+
+	<div class="container">
+		<h1>{{siteName}} - Magic Login</h1>
+
+		<p>Enter your email address below to receive a Magic Login link.</p>
+
+		<p>The link will expire after {{settings.linkExpirationTime}} minutes and can only be used once.</p>
+
+		{% if message != ''%}
+		<p class="{{status}}">{{message}}</p>
+		{% endif %}
+
+		<form method="post" action="" accept-charset="UTF-8">
+		    <input type="hidden" name="action" value="magicLogin/authentication/login">
+		    <input type="hidden" name="redirect" value="magiclogin/login">
+		    <label for="email">Email Address: </label>
+		    <input id="email" type="text" name="email" />
+
+		    <input type="submit" value="{{ 'Get Link'|t }}">
+		</form>
+	</div>
+
+</body>
+</html>
+
