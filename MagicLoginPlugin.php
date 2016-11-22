@@ -70,6 +70,6 @@ class MagicLoginPlugin extends BasePlugin
 
     public function init()
     {
-        require CRAFT_PLUGINS_PATH.'magiclogin/vendor/autoload.php';   
+        require CRAFT_PLUGINS_PATH.'magiclogin/vendor/autoload.php';
     }
 }

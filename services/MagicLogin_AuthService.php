@@ -16,16 +16,15 @@ class MagicLogin_AuthService extends BaseApplicationComponent
 {
     public function createMagicLogin($email)
     {
-    	// Look up user
-    	$user = craft()->users->getUserByEmail($email);
+        // Look up user
+        $user = craft()->users->getUserByEmail($email);
 
-    	if($user === null) 
-    	{
-    		return false;
-    	}
+        if ($user === null) {
+            return false;
+        }
 
-    	// Create random tokens
-    	$factory = new RandomLib\Factory();
+        // Create random tokens
+        $factory = new RandomLib\Factory();
         
         $generator = $factory->getHighStrengthGenerator();
 
@@ -57,20 +56,20 @@ class MagicLogin_AuthService extends BaseApplicationComponent
 
     public function generateSignature($privateKey, $publicKey, $timestamp)
     {
-    	$stringToHash = implode('-', array($publicKey, $timestamp));
+        $stringToHash = implode('-', array($publicKey, $timestamp));
 
-    	$signature = hash_hmac('sha1', $stringToHash, $privateKey);
+        $signature = hash_hmac('sha1', $stringToHash, $privateKey);
 
-    	return $signature;
+        return $signature;
     }
 
     public function getAuthorization($publicKey)
     {
-    	$record = new MagicLogin_AuthRecord();
+        $record = new MagicLogin_AuthRecord();
 
-    	$authRecord = $record->findByAttributes(array('publicKey'=>$publicKey));
+        $authRecord = $record->findByAttributes(array('publicKey'=>$publicKey));
 
-    	return $authRecord;
+        return $authRecord;
     }
 
     public function sendEmail($emailAddress, $link)
@@ -83,8 +82,8 @@ class MagicLogin_AuthService extends BaseApplicationComponent
         
         $email->subject = craft()->getSiteName().' - Magic Login';
         
-        $email->body    = 
-"Here is your Magic Login! 
+        $email->body    =
+        "Here is your Magic Login! 
 
 It can only be used once and will expire in $settings->linkExpirationTime minutes.
 
@@ -92,11 +91,11 @@ $link
 
 Powered by [MagicLogin](https://github.com/aberkie/magiclogin)";
 
-        try{
+        try {
             $success = craft()->email->sendEmail($email);
 
             return $success;
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
